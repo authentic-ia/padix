@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Padix | El Tinder del pádel</title>
+<meta name="description" content="Padix es un club online para hacer amigos y encontrar parejas de pádel.">
+<style>
+  :root {
+    --naranja: #FF6A00;
+    --verde: #39FF14;
+    --negro: #0d0d0d;
+    --gris: #1f1f1f;
+    --gris-claro: #9a9a9a;
+    --blanco: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--negro);
+    color: var(--blanco);
+    line-height: 1.6;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(13,13,13,0.95);
+    border-bottom: 2px solid var(--naranja);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+  .logo { font-size: 1.6rem; font-weight: 900; color: var(--naranja); letter-spacing: 1px; }
+  .logo span { color: var(--verde); }
+  nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+  }
+  nav a:hover { color: var(--verde); }
+  .hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 24px;
+    background: linear-gradient(160deg, #0d0d0d 40%, #1f1f1f 100%);
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .hero h1 .naranja { color: var(--naranja); }
+  .hero h1 .verde { color: var(--verde); }
+  .hero p {
+    font-size: 1.25rem;
+    color: var(--gris-claro);
+    max-width: 640px;
+    margin-bottom: 32px;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--naranja);
+    color: var(--negro);
+    font-weight: bold;
+    padding: 14px 32px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn:hover { background: var(--verde); }
+  section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+  section h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  section h2 span { color: var(--verde); }
+  .subtitulo {
+    text-align: center;
+    color: var(--gris-claro);
+    margin-bottom: 48px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: var(--gris);
+    border-left: 4px solid var(--naranja);
+    padding: 32px 24px;
+    border-radius: 12px;
+  }
+  .card:nth-child(2) { border-left-color: var(--verde); }
+  .card:nth-child(3) { border-left-color: var(--blanco); }
+  .card h3 { font-size: 1.3rem; margin-bottom: 12px; color: var(--naranja); }
+  .card:nth-child(2) h3 { color: var(--verde); }
+  .card:nth-child(3) h3 { color: var(--blanco); }
+  .card p { color: var(--gris-claro); }
+  .fondo-gris { background: var(--gris); max-width: none; }
+  .fondo-gris > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .pasos { counter-reset: paso; }
+  .paso {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+  .numero {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--verde);
+    color: var(--negro);
+    font-weight: 900;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .paso h3 { margin-bottom: 4px; }
+  .paso p { color: var(--gris-claro); }
+  .contacto { text-align: center; }
+  .contacto p { color: var(--gris-claro); margin-bottom: 12px; font-size: 1.1rem; }
+  .contacto a { color: var(--naranja); text-decoration: none; font-weight: bold; }
+  .contacto a:hover { color: var(--verde); }
+  .redes { margin-top: 32px; }
+  .redes a {
+    display: inline-block;
+    margin: 0 10px;
+    border: 2px solid var(--verde);
+    color: var(--verde) !important;
+    padding: 10px 22px;
+    border-radius: 40px;
+  }
+  .redes a:hover { background: var(--verde); color: var(--negro) !important; }
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 2px solid var(--naranja);
+    color: var(--gris-claro);
+    font-size: 0.9rem;
+  }
+  @media (max-width: 640px) {
+    header { flex-direction: column; gap: 12px; }
+    nav a { margin: 0 10px; }
+    .hero p { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">PADIX<span>.</span></div>
+  <nav>
+    <a href="#que-es">Qué es</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1><span class="naranja">PADIX</span>,<br>el <span class="verde">Tinder</span> del pádel</h1>
+    <p>Un club online donde la gente se hace amigos y encuentra pareja para jugar al pádel.</p>
+    <a class="btn" href="#contacto">Quiero sumarme</a>
+  </div>
+
+  <section id="que-es">
+    <h2>¿Qué es <span>Padix</span>?</h2>
+    <p class="subtitulo">Una red social pensada para quienes aman el pádel</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Hacé amigos</h3>
+        <p>Conocé gente que comparte tu pasión por el pádel, dentro y fuera de la cancha.</p>
+      </div>
+      <div class="card">
+        <h3>Encontrá pareja</h3>
+        <p>Encontrá a tu compañero ideal para jugar, según tu nivel, tu zona y tus horarios.</p>
+      </div>
+      <div class="card">
+        <h3>Un club online</h3>
+        <p>Un espacio para conectarte, organizar partidos y sumarte a la comunidad desde donde estés.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="fondo-gris">
+    <h2>Cómo <span>funciona</span></h2>
+    <p class="subtitulo">Tres pasos para empezar a jugar</p>
+    <div class="pasos">
+      <div class="paso">
+        <div class="numero">1</div>
+        <div>
+          <h3>Creá tu perfil</h3>
+          <p>Contanos quién sos, tu nivel de juego y cuándo y dónde te gusta jugar.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="numero">2</div>
+        <div>
+          <h3>Explorá la comunidad</h3>
+          <p>Mirá perfiles de jugadores cerca tuyo y conectá con los que tengan tu mismo estilo.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="numero">3</div>
+        <div>
+          <h3>Jugá</h3>
+          <p>Armá tu pareja, coordiná la cancha y disfrutá del pádel con gente nueva.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <h2>¿Querés <span>sumarte</span>?</h2>
+    <p class="subtitulo">Escribinos y te contamos cómo empezar</p>
+    <p>Email: <a href="mailto:gonzalogranara@gmail.com">gonzalogranara@gmail.com</a></p>
+    <div class="redes">
+      <a href="https://instagram.com/padixtinder" target="_blank" rel="noopener">Instagram: @padixtinder</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Padix. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
