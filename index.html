@@ -4,15 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Padix | El Tinder del pádel</title>
-<meta name="description" content="Padix es un club online para hacer amigos y encontrar parejas de pádel.">
+<meta name="description" content="Padix es el club online para hacer amigos y encontrar pareja de pádel.">
 <style>
   :root {
-    --naranja: #FF6A00;
+    --naranja: #FF6A13;
     --verde: #39FF14;
-    --negro: #0d0d0d;
-    --gris: #1f1f1f;
-    --gris-claro: #9a9a9a;
-    --blanco: #ffffff;
+    --negro: #0A0A0A;
+    --gris-oscuro: #1A1A1A;
+    --gris: #2A2A2A;
+    --gris-claro: #AAAAAA;
+    --blanco: #FFFFFF;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -23,219 +24,152 @@
     line-height: 1.6;
   }
   header {
-    position: sticky;
-    top: 0;
-    background: rgba(13,13,13,0.95);
-    border-bottom: 2px solid var(--naranja);
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 6%;
+    background: rgba(10,10,10,0.95);
+    border-bottom: 1px solid var(--gris);
   }
-  .logo { font-size: 1.6rem; font-weight: 900; color: var(--naranja); letter-spacing: 1px; }
-  .logo span { color: var(--verde); }
-  nav a {
-    color: var(--blanco);
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: bold;
-  }
+  .marca { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.3rem; color: var(--blanco); text-decoration: none; }
+  .marca img { width: 44px; height: 44px; border-radius: 10px; }
+  nav a { color: var(--gris-claro); text-decoration: none; margin-left: 22px; font-size: 0.95rem; }
   nav a:hover { color: var(--verde); }
   .hero {
-    min-height: 85vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-height: 88vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center;
-    padding: 40px 24px;
-    background: linear-gradient(160deg, #0d0d0d 40%, #1f1f1f 100%);
+    padding: 60px 6%;
+    background: radial-gradient(circle at 50% 20%, rgba(255,106,19,0.25), transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(57,255,20,0.15), transparent 50%);
   }
-  .hero h1 {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-  .hero h1 .naranja { color: var(--naranja); }
-  .hero h1 .verde { color: var(--verde); }
-  .hero p {
-    font-size: 1.25rem;
-    color: var(--gris-claro);
-    max-width: 640px;
-    margin-bottom: 32px;
-  }
+  .hero img { width: 150px; height: 150px; border-radius: 34px; margin-bottom: 26px; box-shadow: 0 0 40px rgba(255,106,19,0.5); }
+  .hero h1 { font-size: clamp(2.4rem, 7vw, 4.5rem); line-height: 1.1; margin-bottom: 18px; }
+  .hero h1 span { color: var(--naranja); }
+  .hero p { font-size: clamp(1.05rem, 2.5vw, 1.35rem); color: var(--gris-claro); max-width: 640px; margin-bottom: 34px; }
   .btn {
-    display: inline-block;
-    background: var(--naranja);
-    color: var(--negro);
-    font-weight: bold;
-    padding: 14px 32px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: background 0.2s, color 0.2s;
+    display: inline-block; padding: 16px 34px; border-radius: 40px;
+    background: var(--verde); color: var(--negro); font-weight: bold; font-size: 1.05rem;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
   }
-  .btn:hover { background: var(--verde); }
-  section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
-  section h2 {
-    font-size: 2.2rem;
-    text-align: center;
-    margin-bottom: 16px;
-  }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(57,255,20,0.4); }
+  .btn-secundario { background: transparent; color: var(--naranja); border: 2px solid var(--naranja); margin-left: 12px; }
+  section { padding: 80px 6%; }
+  section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); text-align: center; margin-bottom: 12px; }
   section h2 span { color: var(--verde); }
-  .subtitulo {
-    text-align: center;
-    color: var(--gris-claro);
-    margin-bottom: 48px;
+  .subtitulo { text-align: center; color: var(--gris-claro); margin-bottom: 50px; }
+  .grilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
+  .tarjeta {
+    background: var(--gris-oscuro); border: 1px solid var(--gris);
+    border-radius: 18px; padding: 32px 26px; text-align: center;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
+  .tarjeta .icono { font-size: 2.4rem; margin-bottom: 14px; }
+  .tarjeta h3 { color: var(--naranja); margin-bottom: 10px; font-size: 1.25rem; }
+  .tarjeta p { color: var(--gris-claro); font-size: 0.97rem; }
+  .fondo-gris { background: var(--gris-oscuro); }
+  .pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; text-align: center; }
+  .paso .numero {
+    width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px;
+    background: var(--naranja); color: var(--negro); font-weight: bold; font-size: 1.4rem;
+    display: flex; align-items: center; justify-content: center;
   }
-  .card {
-    background: var(--gris);
-    border-left: 4px solid var(--naranja);
-    padding: 32px 24px;
-    border-radius: 12px;
-  }
-  .card:nth-child(2) { border-left-color: var(--verde); }
-  .card:nth-child(3) { border-left-color: var(--blanco); }
-  .card h3 { font-size: 1.3rem; margin-bottom: 12px; color: var(--naranja); }
-  .card:nth-child(2) h3 { color: var(--verde); }
-  .card:nth-child(3) h3 { color: var(--blanco); }
-  .card p { color: var(--gris-claro); }
-  .fondo-gris { background: var(--gris); max-width: none; }
-  .fondo-gris > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
-  .pasos { counter-reset: paso; }
-  .paso {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    margin-bottom: 28px;
-  }
-  .numero {
-    flex-shrink: 0;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: var(--verde);
-    color: var(--negro);
-    font-weight: 900;
-    font-size: 1.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .paso h3 { margin-bottom: 4px; }
+  .paso h3 { margin-bottom: 8px; }
   .paso p { color: var(--gris-claro); }
+  .cta { text-align: center; background: linear-gradient(135deg, var(--naranja), var(--verde)); color: var(--negro); }
+  .cta h2 { color: var(--negro); }
+  .cta h2 span { color: var(--blanco); }
+  .cta p { font-size: 1.1rem; margin: 0 auto 30px; max-width: 600px; }
+  .cta .btn { background: var(--negro); color: var(--blanco); }
   .contacto { text-align: center; }
-  .contacto p { color: var(--gris-claro); margin-bottom: 12px; font-size: 1.1rem; }
-  .contacto a { color: var(--naranja); text-decoration: none; font-weight: bold; }
-  .contacto a:hover { color: var(--verde); }
-  .redes { margin-top: 32px; }
-  .redes a {
-    display: inline-block;
-    margin: 0 10px;
-    border: 2px solid var(--verde);
-    color: var(--verde) !important;
-    padding: 10px 22px;
-    border-radius: 40px;
-  }
-  .redes a:hover { background: var(--verde); color: var(--negro) !important; }
-  footer {
-    text-align: center;
-    padding: 32px 24px;
-    border-top: 2px solid var(--naranja);
-    color: var(--gris-claro);
-    font-size: 0.9rem;
-  }
-  @media (max-width: 640px) {
-    header { flex-direction: column; gap: 12px; }
-    nav a { margin: 0 10px; }
-    .hero p { font-size: 1.1rem; }
+  .contacto a { color: var(--verde); text-decoration: none; font-size: 1.1rem; display: inline-block; margin: 8px 18px; }
+  .contacto a:hover { color: var(--naranja); }
+  footer { text-align: center; padding: 30px; color: var(--gris-claro); font-size: 0.9rem; border-top: 1px solid var(--gris); }
+  @media (max-width: 700px) {
+    nav a { display: none; }
+    .btn-secundario { margin-left: 0; margin-top: 12px; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">PADIX<span>.</span></div>
+  <a href="#" class="marca">
+    <img src="logo.svg" alt="Logo Padix">
+    Padix
+  </a>
   <nav>
-    <a href="#que-es">Qué es</a>
     <a href="#como-funciona">Cómo funciona</a>
+    <a href="#beneficios">Beneficios</a>
     <a href="#contacto">Contacto</a>
   </nav>
 </header>
 
-<main>
-  <div class="hero">
-    <h1><span class="naranja">PADIX</span>,<br>el <span class="verde">Tinder</span> del pádel</h1>
-    <p>Un club online donde la gente se hace amigos y encuentra pareja para jugar al pádel.</p>
-    <a class="btn" href="#contacto">Quiero sumarme</a>
+<section class="hero">
+  <img src="logo.svg" alt="Logo Padixtinder">
+  <h1>El <span>Tinder</span> del pádel</h1>
+  <p>Padix es el club online donde la gente se hace amigos, arma grupos y encuentra su pareja de pádel ideal.</p>
+  <a href="#contacto" class="btn">Quiero unirme</a>
+  <a href="#como-funciona" class="btn btn-secundario">Cómo funciona</a>
+</section>
+
+<section id="beneficios">
+  <h2>¿Por qué <span>Padix</span>?</h2>
+  <p class="subtitulo">Todo lo que necesitás para jugar más y conocer gente nueva</p>
+  <div class="grilla">
+    <div class="tarjeta">
+      <div class="icono">🤝</div>
+      <h3>Hacé amigos</h3>
+      <p>Conocé jugadores de tu zona y nivel, y sumá gente con la que disfrutar del pádel.</p>
+    </div>
+    <div class="tarjeta">
+      <div class="icono">🎾</div>
+      <h3>Encontrá pareja</h3>
+      <p>Buscá compañeros de juego según tu nivel, horario y disponibilidad.</p>
+    </div>
+    <div class="tarjeta">
+      <div class="icono">💚</div>
+      <h3>Armá tu club</h3>
+      <p>Un club online con comunidad activa, para jugar, charlar y organizar partidos.</p>
+    </div>
   </div>
+</section>
 
-  <section id="que-es">
-    <h2>¿Qué es <span>Padix</span>?</h2>
-    <p class="subtitulo">Una red social pensada para quienes aman el pádel</p>
-    <div class="grid">
-      <div class="card">
-        <h3>Hacé amigos</h3>
-        <p>Conocé gente que comparte tu pasión por el pádel, dentro y fuera de la cancha.</p>
-      </div>
-      <div class="card">
-        <h3>Encontrá pareja</h3>
-        <p>Encontrá a tu compañero ideal para jugar, según tu nivel, tu zona y tus horarios.</p>
-      </div>
-      <div class="card">
-        <h3>Un club online</h3>
-        <p>Un espacio para conectarte, organizar partidos y sumarte a la comunidad desde donde estés.</p>
-      </div>
+<section id="como-funciona" class="fondo-gris">
+  <h2>Cómo <span>funciona</span></h2>
+  <p class="subtitulo">Tres pasos y ya estás jugando</p>
+  <div class="pasos">
+    <div class="paso">
+      <div class="numero">1</div>
+      <h3>Creá tu perfil</h3>
+      <p>Contanos quién sos, tu nivel y en qué zona jugás.</p>
     </div>
-  </section>
+    <div class="paso">
+      <div class="numero">2</div>
+      <h3>Explorá jugadores</h3>
+      <p>Mirá perfiles y elegí con quién querés jugar o charlar.</p>
+    </div>
+    <div class="paso">
+      <div class="numero">3</div>
+      <h3>Conectá y jugá</h3>
+      <p>Cuando hay match, coordinen la cancha y a disfrutar.</p>
+    </div>
+  </div>
+</section>
 
-  <section id="como-funciona" class="fondo-gris">
-    <h2>Cómo <span>funciona</span></h2>
-    <p class="subtitulo">Tres pasos para empezar a jugar</p>
-    <div class="pasos">
-      <div class="paso">
-        <div class="numero">1</div>
-        <div>
-          <h3>Creá tu perfil</h3>
-          <p>Contanos quién sos, tu nivel de juego y cuándo y dónde te gusta jugar.</p>
-        </div>
-      </div>
-      <div class="paso">
-        <div class="numero">2</div>
-        <div>
-          <h3>Explorá la comunidad</h3>
-          <p>Mirá perfiles de jugadores cerca tuyo y conectá con los que tengan tu mismo estilo.</p>
-        </div>
-      </div>
-      <div class="paso">
-        <div class="numero">3</div>
-        <div>
-          <h3>Jugá</h3>
-          <p>Armá tu pareja, coordiná la cancha y disfrutá del pádel con gente nueva.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="cta">
+  <h2>¿Listo para <span>jugar</span>?</h2>
+  <p>Sumate a Padix y encontrá tu próximo compañero de pádel.</p>
+  <a href="#contacto" class="btn">Quiero unirme</a>
+</section>
 
-  <section id="contacto" class="contacto">
-    <h2>¿Querés <span>sumarte</span>?</h2>
-    <p class="subtitulo">Escribinos y te contamos cómo empezar</p>
-    <p>Email: <a href="mailto:gonzalogranara@gmail.com">gonzalogranara@gmail.com</a></p>
-    <div class="redes">
-      <a href="https://instagram.com/padixtinder" target="_blank" rel="noopener">Instagram: @padixtinder</a>
-    </div>
-  </section>
-</main>
+<section id="contacto" class="contacto">
+  <h2><span>Contacto</span></h2>
+  <p class="subtitulo">Escribinos y te sumamos</p>
+  <a href="mailto:gonzalogranara@gmail.com">✉ gonzalogranara@gmail.com</a>
+  <a href="https://instagram.com/padixtinder" target="_blank" rel="noopener">📸 @padixtinder</a>
+</section>
 
 <footer>
-  <p>© 2026 Padix. Todos los derechos reservados.</p>
+  © 2026 Padix · El Tinder del pádel
 </footer>
 
 </body>
