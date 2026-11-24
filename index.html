@@ -3,174 +3,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Padix | El Tinder del pádel</title>
-<meta name="description" content="Padix es el club online para hacer amigos y encontrar pareja de pádel.">
+<title>Padix | Encontrá con quién jugar al pádel</title>
+<meta name="description" content="Padix es la red social tipo Tinder para pádel. Encontrá jugadores de tu nivel, armá partidos y jugá más.">
+<meta name="theme-color" content="#070707">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --naranja: #FF6A13;
-    --verde: #39FF14;
-    --negro: #0A0A0A;
-    --gris-oscuro: #1A1A1A;
-    --gris: #2A2A2A;
-    --gris-claro: #AAAAAA;
-    --blanco: #FFFFFF;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--negro);
-    color: var(--blanco);
-    line-height: 1.6;
-  }
-  header {
-    position: sticky; top: 0; z-index: 10;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 14px 6%;
-    background: rgba(10,10,10,0.95);
-    border-bottom: 1px solid var(--gris);
-  }
-  .marca { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.3rem; color: var(--blanco); text-decoration: none; }
-  .marca img { width: 44px; height: 44px; border-radius: 10px; }
-  nav a { color: var(--gris-claro); text-decoration: none; margin-left: 22px; font-size: 0.95rem; }
-  nav a:hover { color: var(--verde); }
-  .hero {
-    min-height: 88vh;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    text-align: center;
-    padding: 60px 6%;
-    background: radial-gradient(circle at 50% 20%, rgba(255,106,19,0.25), transparent 60%),
-                radial-gradient(circle at 80% 80%, rgba(57,255,20,0.15), transparent 50%);
-  }
-  .hero img { width: 150px; height: 150px; border-radius: 34px; margin-bottom: 26px; box-shadow: 0 0 40px rgba(255,106,19,0.5); }
-  .hero h1 { font-size: clamp(2.4rem, 7vw, 4.5rem); line-height: 1.1; margin-bottom: 18px; }
-  .hero h1 span { color: var(--naranja); }
-  .hero p { font-size: clamp(1.05rem, 2.5vw, 1.35rem); color: var(--gris-claro); max-width: 640px; margin-bottom: 34px; }
-  .btn {
-    display: inline-block; padding: 16px 34px; border-radius: 40px;
-    background: var(--verde); color: var(--negro); font-weight: bold; font-size: 1.05rem;
-    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(57,255,20,0.4); }
-  .btn-secundario { background: transparent; color: var(--naranja); border: 2px solid var(--naranja); margin-left: 12px; }
-  section { padding: 80px 6%; }
-  section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); text-align: center; margin-bottom: 12px; }
-  section h2 span { color: var(--verde); }
-  .subtitulo { text-align: center; color: var(--gris-claro); margin-bottom: 50px; }
-  .grilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
-  .tarjeta {
-    background: var(--gris-oscuro); border: 1px solid var(--gris);
-    border-radius: 18px; padding: 32px 26px; text-align: center;
-  }
-  .tarjeta .icono { font-size: 2.4rem; margin-bottom: 14px; }
-  .tarjeta h3 { color: var(--naranja); margin-bottom: 10px; font-size: 1.25rem; }
-  .tarjeta p { color: var(--gris-claro); font-size: 0.97rem; }
-  .fondo-gris { background: var(--gris-oscuro); }
-  .pasos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; text-align: center; }
-  .paso .numero {
-    width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px;
-    background: var(--naranja); color: var(--negro); font-weight: bold; font-size: 1.4rem;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .paso h3 { margin-bottom: 8px; }
-  .paso p { color: var(--gris-claro); }
-  .cta { text-align: center; background: linear-gradient(135deg, var(--naranja), var(--verde)); color: var(--negro); }
-  .cta h2 { color: var(--negro); }
-  .cta h2 span { color: var(--blanco); }
-  .cta p { font-size: 1.1rem; margin: 0 auto 30px; max-width: 600px; }
-  .cta .btn { background: var(--negro); color: var(--blanco); }
-  .contacto { text-align: center; }
-  .contacto a { color: var(--verde); text-decoration: none; font-size: 1.1rem; display: inline-block; margin: 8px 18px; }
-  .contacto a:hover { color: var(--naranja); }
-  footer { text-align: center; padding: 30px; color: var(--gris-claro); font-size: 0.9rem; border-top: 1px solid var(--gris); }
-  @media (max-width: 700px) {
-    nav a { display: none; }
-    .btn-secundario { margin-left: 0; margin-top: 12px; }
-  }
+:root{--orange:#ff6a00;--neon:#b6ff00;--black:#070707;--card:#111;--line:rgba(255,255,255,.09);--gray:#9a9a9a;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.container{width:min(1160px,92%);margin:0 auto}
+section{padding:110px 0;position:relative}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:.3s}
+nav.scrolled{background:rgba(7,7,7,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.6rem;letter-spacing:.04em}
+.logo span{color:var(--neon)}
+.links{display:flex;gap:34px;font-size:.92rem;color:var(--gray)}
+.links a{transition:.2s}.links a:hover{color:var(--white)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:100px;font-weight:600;font-size:.95rem;transition:.3s;cursor:pointer;border:0;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,var(--orange),#ff9500);color:#000;box-shadow:0 10px 40px -10px var(--orange)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 50px -10px var(--orange)}
+.btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--white)}
+.btn-ghost:hover{border-color:var(--neon);color:var(--neon)}
+.btn-sm{padding:10px 20px;font-size:.85rem}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:130px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 20%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 40%,#000 20%,transparent 70%);opacity:.6}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none}
+.blob.o{width:480px;height:480px;background:var(--orange);top:-100px;right:-80px;opacity:.35}
+.blob.n{width:380px;height:380px;background:var(--neon);bottom:-120px;left:-100px;opacity:.18}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;position:relative;z-index:2}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:100px;font-size:.82rem;color:var(--gray);background:rgba(255,255,255,.03);margin-bottom:28px}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 12px var(--neon);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.3}}
+h1{font-size:clamp(2.8rem,6.4vw,5.4rem);font-weight:700}
+.grad{background:linear-gradient(100deg,var(--orange),var(--neon));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.15rem;color:var(--gray);max-width:520px;margin:26px 0 38px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+/* PHONE */
+.phone-wrap{display:flex;justify-content:center;position:relative}
+.phone{width:290px;height:590px;border-radius:44px;background:#0d0d0d;border:1px solid #2a2a2a;padding:12px;position:relative;box-shadow:0 40px 120px -20px rgba(255,106,0,.35),inset 0 0 0 2px #1b1b1b;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+.screen{width:100%;height:100%;border-radius:34px;background:linear-gradient(180deg,#151515,#0a0a0a);overflow:hidden;position:relative;display:flex;flex-direction:column}
+.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:90px;height:24px;border-radius:20px;background:#000;z-index:5}
+.app-top{padding:44px 20px 10px;display:flex;justify-content:space-between;align-items:center;font-family:'Space Grotesk',sans-serif;font-weight:700}
+.app-top b{color:var(--neon)}
+.stack{flex:1;position:relative;margin:6px 16px 0}
+.pcard{position:absolute;inset:0;border-radius:24px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line);overflow:hidden}
+.pcard.c1{background:linear-gradient(160deg,#ff6a00 0%,#7a2e00 55%,#1a0a00 100%);z-index:3;animation:swipe 7s infinite}
+.pcard.c2{background:linear-gradient(160deg,#b6ff00 0%,#3d5700 55%,#0c1400 100%);z-index:2;transform:scale(.94) translateY(14px);animation:next 7s infinite}
+.pcard.c3{background:#1a1a1a;z-index:1;transform:scale(.88) translateY(28px)}
+.pcard h4{font-size:1.5rem;color:#fff}
+.pcard small{color:rgba(255,255,255,.8);font-size:.8rem}
+.tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.tags span{background:rgba(0,0,0,.45);padding:4px 10px;border-radius:100px;font-size:.7rem;color:#fff}
+.ava{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:110px;height:110px;border-radius:50%;background:rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.4);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-size:2.6rem;font-weight:700;color:#fff}
+.stamp{position:absolute;top:26px;right:18px;border:3px solid var(--neon);color:var(--neon);padding:2px 12px;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;transform:rotate(14deg);opacity:0;animation:stamp 7s infinite;background:rgba(0,0,0,.4)}
+@keyframes swipe{0%,45%{transform:none;opacity:1}62%{transform:translateX(260px) rotate(22deg);opacity:0}63%,100%{transform:none;opacity:0}}
+@keyframes next{0%,45%{transform:scale(.94) translateY(14px)}62%,90%{transform:scale(1) translateY(0)}100%{transform:scale(.94) translateY(14px)}}
+@keyframes stamp{0%,40%{opacity:0}50%,60%{opacity:1}62%,100%{opacity:0}}
+.actions{display:flex;justify-content:center;gap:18px;padding:16px}
+.actions div{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:#161616;font-size:1.1rem;font-weight:700}
+.actions div:first-child{color:#ff4d4d}
+.actions div:nth-child(2){border-color:var(--neon);color:var(--neon);box-shadow:0 0 20px -4px var(--neon)}
+.match{position:absolute;left:-30px;bottom:90px;background:rgba(17,17,17,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);padding:12px 18px;border-radius:16px;font-size:.82rem;display:flex;gap:10px;align-items:center;animation:float 5s ease-in-out infinite reverse;z-index:6}
+.match i{width:10px;height:10px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+/* MARQUEE */
+.marquee{padding:26px 0;border-block:1px solid var(--line);overflow:hidden;background:#0b0b0b}
+.track{display:flex;width:max-content;animation:scroll 30s linear infinite}
+.group{display:flex;gap:60px;padding-right:60px;font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:#2f2f2f;text-transform:uppercase;white-space:nowrap}
+.group em{font-style:normal;color:var(--orange)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+/* HEADINGS */
+.eyebrow{color:var(--neon);font-size:.82rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+.sec-head{max-width:640px;margin-bottom:60px}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+.sec-head p{color:var(--gray);margin-top:18px;font-size:1.05rem}
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:38px 32px;transition:.4s}
+.step:hover{transform:translateY(-8px);border-color:rgba(255,106,0,.5)}
+.step .n{font-family:'Space Grotesk',sans-serif;font-size:4.5rem;font-weight:700;color:transparent;-webkit-text-stroke:1px #3a3a3a;line-height:1;margin-bottom:24px;transition:.3s}
+.step:hover .n{-webkit-text-stroke:1px var(--orange)}
+.step h3{font-size:1.5rem;margin-bottom:10px}
+.step p{color:var(--gray)}
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.b{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:34px;position:relative;overflow:hidden;transition:.4s}
+.b:hover{border-color:rgba(182,255,0,.4)}
+.b::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:var(--orange);filter:blur(100px);opacity:0;top:-80px;right:-80px;transition:.5s;pointer-events:none}
+.b:hover::after{opacity:.25}
+.w2{grid-column:span 2}.w3{grid-column:span 3}.w4{grid-column:span 4}
+.ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(182,255,0,.1);border:1px solid rgba(182,255,0,.25);color:var(--neon);margin-bottom:22px}
+.ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.b h3{font-size:1.45rem;margin-bottom:10px}
+.b p{color:var(--gray);font-size:.97rem}
+.b.hl{background:linear-gradient(135deg,#1e0d00,#111);border-color:rgba(255,106,0,.35)}
+.b.hl .ico{background:rgba(255,106,0,.12);border-color:rgba(255,106,0,.35);color:var(--orange)}
+/* LOCATION */
+.loc{background:linear-gradient(180deg,transparent,#0c0c0c,transparent)}
+.loc-box{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:36px;padding:56px;overflow:hidden}
+.loc-box h2{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:18px}
+.loc-box p{color:var(--gray);margin-bottom:26px}
+.addr{display:flex;gap:16px;align-items:center;padding:18px 22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.02)}
+.addr .ico{margin:0;flex-shrink:0}
+.addr b{display:block}
+.addr span{color:var(--gray);font-size:.9rem}
+.radar{width:100%;aspect-ratio:1;max-width:340px;margin:auto;border-radius:50%;position:relative;border:1px solid rgba(182,255,0,.3);background:radial-gradient(circle,rgba(182,255,0,.12),transparent 65%)}
+.radar::before,.radar::after{content:"";position:absolute;inset:18%;border-radius:50%;border:1px solid rgba(182,255,0,.25)}
+.radar::after{inset:36%}
+.sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(182,255,0,.35),transparent 28%);animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--orange);box-shadow:0 0 16px var(--orange);z-index:2}
+.d-a{top:22%;left:60%}.d-b{top:62%;left:24%}.d-c{top:70%;left:68%}
+.d-d{top:40%;left:38%;background:var(--neon);box-shadow:0 0 16px var(--neon)}
+/* STORE */
+.store{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;padding:48px 56px;border-radius:32px;background:linear-gradient(120deg,#1a0b00,#0d0d0d 60%);border:1px solid rgba(255,106,0,.3)}
+.store h3{font-size:clamp(1.6rem,3vw,2.3rem)}
+.store p{color:var(--gray);margin-top:8px;max-width:520px}
+/* FAQ */
+.faq{max-width:800px;margin:0 auto}
+.faq .sec-head{text-align:center;margin-inline:auto}
+details{border:1px solid var(--line);border-radius:20px;background:var(--card);margin-bottom:12px;padding:0 26px;transition:.3s}
+details[open]{border-color:rgba(182,255,0,.35)}
+summary{cursor:pointer;list-style:none;padding:22px 0;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.6rem;color:var(--neon);transition:.3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--gray);padding-bottom:22px}
+/* CTA */
+.cta{text-align:center;padding:130px 0;overflow:hidden}
+.cta .blob.o{top:auto;bottom:-200px;right:50%;transform:translateX(50%);opacity:.3}
+.cta-in{position:relative;z-index:2}
+.cta h2{font-size:clamp(2.4rem,6vw,4.6rem);max-width:820px;margin:0 auto 22px}
+.cta p{color:var(--gray);max-width:520px;margin:0 auto 38px;font-size:1.1rem}
+.cta .hero-cta{justify-content:center}
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:50px 0 36px;color:var(--gray);font-size:.9rem}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.foot .col{display:flex;flex-direction:column;gap:8px}
+.foot a:hover{color:var(--neon)}
+.copy{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media(max-width:900px){
+  section{padding:80px 0}
+  .links{display:none}
+  .hero-grid,.loc-box{grid-template-columns:1fr}
+  .hero-grid{gap:50px;text-align:center}
+  .lead{margin-inline:auto}.hero-cta{justify-content:center}
+  .match{left:0}
+  .steps{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}
+  .w2,.w3,.w4{grid-column:auto}
+  .loc-box{padding:34px 24px}
+  .store{padding:34px 26px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<header>
-  <a href="#" class="marca">
-    <img src="logo.svg" alt="Logo Padix">
-    Padix
-  </a>
-  <nav>
-    <a href="#como-funciona">Cómo funciona</a>
-    <a href="#beneficios">Beneficios</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+<nav id="nav">
+  <div class="container nav-in">
+    <a href="#inicio" class="logo">PADI<span>X</span></a>
+    <div class="links">
+      <a href="#como">Cómo funciona</a>
+      <a href="#ventajas">Ventajas</a>
+      <a href="#ubicacion">Dónde estamos</a>
+      <a href="#faq">Preguntas</a>
+    </div>
+    <a href="https://instagram.com/padixtinder" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Quiero jugar</a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="blob o"></div><div class="blob n"></div>
+  <div class="container hero-grid">
+    <div>
+      <div class="pill"><i></i> La red social para jugadores de pádel</div>
+      <h1>Deslizá. Matcheá. <span class="grad">Jugá.</span></h1>
+      <p class="lead">Padix es el "Tinder" del pádel: encontrá jugadores de tu nivel y de tu zona, armá la pareja ideal y llená la cancha cuando quieras.</p>
+      <div class="hero-cta">
+        <a href="https://instagram.com/padixtinder" target="_blank" rel="noopener" class="btn btn-primary">Sumate en Instagram →</a>
+        <a href="#como" class="btn btn-ghost">Ver cómo funciona</a>
+      </div>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="app-top"><span>PADI<b>X</b></span><span style="font-size:.8rem;color:var(--gray)">Cerca tuyo</span></div>
+          <div class="stack">
+            <div class="pcard c3"></div>
+            <div class="pcard c2"><div class="ava">M</div><h4>Martín, 29</h4><small>A 3 km · Revés</small><div class="tags"><span>Nivel 4ª</span><span>Noches</span></div></div>
+            <div class="pcard c1"><div class="ava">L</div><div class="stamp">MATCH</div><h4>Lucía, 26</h4><small>A 2 km · Drive</small><div class="tags"><span>Nivel 5ª</span><span>Fines de semana</span></div></div>
+          </div>
+          <div class="actions"><div>✕</div><div>♥</div><div>★</div></div>
+        </div>
+      </div>
+      <div class="match"><i></i> ¡Nuevo partido armado!</div>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-  <img src="logo.svg" alt="Logo Padixtinder">
-  <h1>El <span>Tinder</span> del pádel</h1>
-  <p>Padix es el club online donde la gente se hace amigos, arma grupos y encuentra su pareja de pádel ideal.</p>
-  <a href="#contacto" class="btn">Quiero unirme</a>
-  <a href="#como-funciona" class="btn btn-secundario">Cómo funciona</a>
-</section>
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <div class="group"><span>Encontrá pareja</span><em>●</em><span>Armá partidos</span><em>●</em><span>Jugá más</span><em>●</em><span>Subí de nivel</span><em>●</em></div>
+    <div class="group"><span>Encontrá pareja</span><em>●</em><span>Armá partidos</span><em>●</em><span>Jugá más</span><em>●</em><span>Subí de nivel</span><em>●</em></div>
+  </div>
+</div>
 
-<section id="beneficios">
-  <h2>¿Por qué <span>Padix</span>?</h2>
-  <p class="subtitulo">Todo lo que necesitás para jugar más y conocer gente nueva</p>
-  <div class="grilla">
-    <div class="tarjeta">
-      <div class="icono">🤝</div>
-      <h3>Hacé amigos</h3>
-      <p>Conocé jugadores de tu zona y nivel, y sumá gente con la que disfrutar del pádel.</p>
+<section id="como">
+  <div class="container">
+    <div class="sec-head rv">
+      <div class="eyebrow">Cómo funciona</div>
+      <h2>Tres pasos y estás en la cancha</h2>
+      <p>Sin grupos de WhatsApp eternos ni "falta uno" a último momento.</p>
     </div>
-    <div class="tarjeta">
-      <div class="icono">🎾</div>
-      <h3>Encontrá pareja</h3>
-      <p>Buscá compañeros de juego según tu nivel, horario y disponibilidad.</p>
-    </div>
-    <div class="tarjeta">
-      <div class="icono">💚</div>
-      <h3>Armá tu club</h3>
-      <p>Un club online con comunidad activa, para jugar, charlar y organizar partidos.</p>
+    <div class="steps">
+      <div class="step rv"><div class="n">01</div><h3>Armá tu perfil</h3><p>Contá tu nivel, tu posición en la cancha y los horarios en los que te gusta jugar.</p></div>
+      <div class="step rv"><div class="n">02</div><h3>Deslizá y matcheá</h3><p>Mirá jugadores cerca tuyo. Si hay buena onda de los dos lados, es un match.</p></div>
+      <div class="step rv"><div class="n">03</div><h3>Coordiná y jugá</h3><p>Chateá, elijan cancha y horario, y listo: partido confirmado.</p></div>
     </div>
   </div>
 </section>
 
-<section id="como-funciona" class="fondo-gris">
-  <h2>Cómo <span>funciona</span></h2>
-  <p class="subtitulo">Tres pasos y ya estás jugando</p>
-  <div class="pasos">
-    <div class="paso">
-      <div class="numero">1</div>
-      <h3>Creá tu perfil</h3>
-      <p>Contanos quién sos, tu nivel y en qué zona jugás.</p>
+<section id="ventajas">
+  <div class="container">
+    <div class="sec-head rv">
+      <div class="eyebrow">Ventajas</div>
+      <h2>Todo lo que necesitás para jugar más</h2>
     </div>
-    <div class="paso">
-      <div class="numero">2</div>
-      <h3>Explorá jugadores</h3>
-      <p>Mirá perfiles y elegí con quién querés jugar o charlar.</p>
+    <div class="bento">
+      <div class="b hl w4 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+        <h3>Matches por nivel</h3>
+        <p>Jugá con gente de tu categoría y disfrutá de partidos parejos, divertidos y sin sobresaltos.</p>
+      </div>
+      <div class="b w2 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Cerca tuyo</h3>
+        <p>Jugadores de tu zona, para no viajar de más.</p>
+      </div>
+      <div class="b w2 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Tus horarios</h3>
+        <p>Elegí cuándo jugás y encontrá a quien coincida.</p>
+      </div>
+      <div class="b w4 rv">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Chat directo</h3>
+        <p>Hablá con tus matches y coordiná todo en un solo lugar, sin vueltas.</p>
+      </div>
     </div>
-    <div class="paso">
-      <div class="numero">3</div>
-      <h3>Conectá y jugá</h3>
-      <p>Cuando hay match, coordinen la cancha y a disfrutar.</p>
+  </div>
+</section>
+
+<section class="loc" id="ubicacion">
+  <div class="container">
+    <div class="loc-box rv">
+      <div>
+        <div class="eyebrow">Dónde estamos</div>
+        <h2>Jugamos en Yerba Buena</h2>
+        <p>Pasá a conocernos o escribinos para sumarte a la comunidad Padix.</p>
+        <div class="addr">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><b>San Javier 2400</b><span>Yerba Buena, Tucumán</span></div>
+        </div>
+      </div>
+      <div class="radar"><div class="sweep"></div><span class="dot d-a"></span><span class="dot d-b"></span><span class="dot d-c"></span><span class="dot d-d"></span></div>
     </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="store rv">
+      <div>
+        <div class="eyebrow">Tienda</div>
+        <h3>Padix Paletas</h3>
+        <p>Mirá nuestra tienda de paletas y equipate para tu próximo partido.</p>
+      </div>
+      <a href="https://authentic-ia.github.io/padix-paletas/" class="btn btn-primary">Ir a la tienda →</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container faq">
+    <div class="sec-head rv">
+      <div class="eyebrow">Preguntas</div>
+      <h2>Lo que más nos preguntan</h2>
+    </div>
+    <details class="rv"><summary>¿Qué es Padix?</summary><p>Es una red social tipo Tinder pensada para jugadores de pádel: deslizás perfiles, matcheás y armás partidos.</p></details>
+    <details class="rv"><summary>¿Tengo que tener mucho nivel?</summary><p>No. Hay lugar para todos los niveles, y justamente te mostramos gente de tu categoría para que los partidos sean parejos.</p></details>
+    <details class="rv"><summary>¿Cómo me sumo?</summary><p>Escribinos por Instagram a @padixtinder o por mail a gonzalogranara@gmail.com y te contamos los pasos.</p></details>
+    <details class="rv"><summary>¿Dónde están?</summary><p>En San Javier 2400, Yerba Buena.</p></details>
   </div>
 </section>
 
 <section class="cta">
-  <h2>¿Listo para <span>jugar</span>?</h2>
-  <p>Sumate a Padix y encontrá tu próximo compañero de pádel.</p>
-  <a href="#contacto" class="btn">Quiero unirme</a>
-</section>
-
-<section id="contacto" class="contacto">
-  <h2><span>Contacto</span></h2>
-  <p class="subtitulo">Escribinos y te sumamos</p>
-  <a href="mailto:gonzalogranara@gmail.com">✉ gonzalogranara@gmail.com</a>
-  <a href="https://instagram.com/padixtinder" target="_blank" rel="noopener">📸 @padixtinder</a>
+  <div class="blob o"></div>
+  <div class="container cta-in rv">
+    <h2>Tu próximo partido está a <span class="grad">un swipe</span></h2>
+    <p>Sumate a Padix y dejá de buscar con quién jugar.</p>
+    <div class="hero-cta">
+      <a href="https://instagram.com/padixtinder" target="_blank" rel="noopener" class="btn btn-primary">Escribinos en Instagram</a>
+      <a href="mailto:gonzalogranara@gmail.com" class="btn btn-ghost">gonzalogranara@gmail.com</a>
+    </div>
+  </div>
 </section>
 
 <footer>
-  © 2026 Padix · El Tinder del pádel
+  <div class="container">
+    <div class="foot">
+      <div class="col"><div class="logo">PADI<span>X</span></div><span>Encontrá con quién jugar al pádel.</span></div>
+      <div class="col"><a href="https://instagram.com/padixtinder" target="_blank" rel="noopener">Instagram @padixtinder</a><a href="mailto:gonzalogranara@gmail.com">gonzalogranara@gmail.com</a><span>San Javier 2400, Yerba Buena</span></div>
+      <div class="col"><a href="#como">Cómo funciona</a><a href="#ventajas">Ventajas</a><a href="https://authentic-ia.github.io/padix-paletas/">Tienda de paletas</a></div>
+    </div>
+    <div class="copy">© 2026 Padix. Todos los derechos reservados.</div>
+  </div>
 </footer>
 
+<script>
+const nav=document.getElementById('nav');
+function onScroll(){nav.classList.toggle('scrolled',window.scrollY>30)}
+window.addEventListener('scroll',onScroll);onScroll();
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
